@@ -1,0 +1,21 @@
+double findNthRootOfM(int n, long long m) {
+	double ans;
+    double l=1;
+    double h=m;
+    double epsilon=1e-7;
+    double mid = l+(h-l)/2;
+    while(abs(pow(mid,n)-m)>epsilon)
+    {
+        if(pow(mid,n)>m)
+        {
+            h=mid;
+        }
+        else{
+            l=mid;
+        }
+        mid=l+(h-l)/2;
+    }
+    return mid;
+    
+}
+// TC O(N*LOG(M*10^D) 
