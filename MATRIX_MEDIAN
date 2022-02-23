@@ -1,0 +1,35 @@
+upper bound gives us the iterator on the index at value is greater if not greater than on the last index;
+#include <bits/stdc++.h>
+int getMedian(vector<vector<int>> &matrix)
+{
+    int mx=INT_MIN;
+    int mn=INT_MAX;
+    int r= matrix.size();
+    int c= matrix[0].size();
+    for(int i=0; i<r; i++)
+    {
+        mx = max(mx,matrix[i][c-1]);
+        mn= min(mn,matrix[i][0]);
+    }
+    
+    int desired= (r*c+1)/2;
+    while(mn<mx)
+    {
+        int mid = mn+(mx-mn)/2;
+        int place=0;
+        for(int i=0; i<r; i++)
+        {
+            place += upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin(); // upper_bound gives us how many number less than and equal to mid taking log(c);
+        }
+        if(place<desired)
+        {
+            mn=mid+1; // including mid number that is why mid+1 because if place is lss than desired means definitely less
+        }
+        else{
+            mx=mid;    // if place >= desired so we cannot neglect mid element
+        }
+    }
+    return mn;
+    
+}
+// TC (32*r*log(c)) sc o(1)
