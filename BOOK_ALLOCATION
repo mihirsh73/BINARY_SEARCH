@@ -1,0 +1,37 @@
+bool isValid(vector<int> &A, int B, int mid){
+    int students=1;
+    int sum=0;
+    for(int i:A){
+        sum+=i;
+        if(sum>mid){
+            students++;
+            sum=i;
+        }
+        if(students>B){
+            return false;
+        }
+    }
+    return true;
+}
+ 
+int Solution::books(vector<int> &A, int B) {
+    int N=A.size();
+    if(N<B) return -1;
+    int S=0;
+    int mx=0;
+    for(int i:A){
+        S+=i;
+        mx=max(mx,i);
+    }
+    int low=mx, high=S;
+    int res=-1;
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        if(isValid(A, B, mid)){   // maximum of minimum
+            res=mid;
+            high=mid-1;
+        }
+        else low=mid+1;
+    }
+    return res;
+}
