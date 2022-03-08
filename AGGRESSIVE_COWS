@@ -5,10 +5,10 @@ bool check(vector<int> positions, int cows, int dist)
     int last_placed=positions[0];
     for(int i=1; i<positions.size(); i++)
     {
-        if(positions[i]-last_placed>=dist)     // greater or equal to the distance we are taking 
+        if(positions[i]-last_placed>=dist)     // agr distance zayada hai mid distance sei toh count increase kr dengai kyuki minimum distance agr minimum distance(mtlb itna distance hona hii chaiyai) 
         {
             count++;
-            last_placed=positions[i];
+            last_placed=positions[i];  // minimum distance mtlb distance ya toh equal ya toh issai zayada ho
         }
         
     }
