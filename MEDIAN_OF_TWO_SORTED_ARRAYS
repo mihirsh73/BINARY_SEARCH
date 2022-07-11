@@ -1,3 +1,5 @@
+//We divide A and B into two parts such that the 
+    sum of left part of both A and B will result in left part of merged array
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
@@ -5,7 +7,7 @@ public:
         int m=nums2.size();
         
         if(n>m){
-            return findMedianSortedArrays(nums2,nums1);
+            return findMedianSortedArrays(nums2,nums1);  
         }
         int low=0,high=n;
         
