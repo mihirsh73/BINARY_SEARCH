@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+// keep the k smallest element on the left half of the array 
 int ninjaAndLadoos(vector<int> &arr1, vector<int> &arr2, int n, int m, int k) {
     // Write your code here.
    if(n>m)
